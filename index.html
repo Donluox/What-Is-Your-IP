@@ -1,364 +1,359 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="zh-CN" data-theme="dark">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>What Is My IP - Pro</title>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-<!-- 地图样式 -->
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-<style>
-/* --- 核心样式 --- */
-body {
-  background: #0d1117;
-  color: #fff;
-  font-family: 'Segoe UI', sans-serif;
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  padding: 20px;
-  margin: 0;
-}
-header {
-  text-align: center;
-  font-size: 2rem;
-  color: #00e676;
-  font-weight: 700;
-  margin-bottom: 25px;
-  text-shadow: 0 0 8px #00e676aa;
-}
-.card {
-  background-color: #1e1e1e;
-  border-radius: 12px;
-  padding: 20px;
-  margin-bottom: 20px;
-  box-shadow: 0 0 12px rgba(0,0,0,0.5);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  max-width: 800px;
-  margin-left: auto; margin-right: auto;
-  width: 100%;
-  box-sizing: border-box;
-}
-.card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 0 15px rgba(0,230,118,0.2);
-}
-.card h2 {
-  margin-top: 0;
-  margin-bottom: 15px;
-  color: #00e676;
-  font-size: 1.3rem;
-  display: flex;
-  align-items: center;
-  border-bottom: 1px solid #333;
-  padding-bottom: 10px;
-}
-.card h2 span { margin-right: 8px; }
-
-/* 输入框组 */
-.input-group { margin-bottom: 15px; display: flex; gap: 10px; }
-input {
-  flex: 1;
-  padding: 10px;
-  border-radius: 6px;
-  border: 1px solid #333;
-  background-color: #222;
-  color: #eee;
-  font-size: 15px;
-  outline: none;
-}
-input:focus { border-color: #00e676; }
-button.search-btn {
-  padding: 10px 18px;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  background-color: #00c853;
-  color: #fff;
-  font-size: 15px;
-  transition: background 0.3s ease;
-  white-space: nowrap;
-}
-button.search-btn:hover { background-color: #00e676; }
-
-/* 信息展示 */
-.info { font-size: 15px; line-height: 1.8; }
-.flag { width: 24px; height: auto; vertical-align: middle; margin-left: 6px; border-radius: 2px; }
-
-/* --- 纯净度标签样式 --- */
-.badge {
-    padding: 2px 8px;
-    border-radius: 4px;
-    font-size: 12px;
-    font-weight: bold;
-    margin-left: 5px;
-    vertical-align: middle;
-}
-.badge-green { color: #00e676; background: rgba(0,230,118,0.1); border: 1px solid rgba(0,230,118,0.3); }
-.badge-red { color: #ff5252; background: rgba(255,82,82,0.1); border: 1px solid rgba(255,82,82,0.3); }
-.badge-yellow { color: #ffab00; background: rgba(255,171,0,0.1); border: 1px solid rgba(255,171,0,0.3); }
-
-/* --- 外部工具按钮组 --- */
-.tool-links {
-  margin-top: 15px;
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-}
-.tool-btn {
-  flex: 1;
-  text-align: center;
-  padding: 8px 12px;
-  background: #2a2a2a;
-  border: 1px solid #444;
-  border-radius: 6px;
-  color: #ccc;
-  text-decoration: none;
-  font-size: 13px;
-  transition: 0.2s;
-}
-.tool-btn:hover {
-  background: #333;
-  color: #fff;
-  border-color: #00e676;
-}
-.tool-btn i { margin-right: 5px; }
-
-/* 历史记录 */
-.history-list { margin-top: 15px; font-size: 13px; color: #aaa; }
-.history-tag {
-  cursor: pointer;
-  margin-right: 8px;
-  padding: 3px 8px;
-  border-radius: 4px;
-  background: #2a2a2a;
-  border: 1px solid #333;
-  display: inline-block;
-  margin-bottom: 5px;
-  transition: 0.2s;
-}
-.history-tag:hover { border-color: #00e676; color: #00e676; }
-
-/* 地图与加载 */
-#map { width: 100%; height: 250px; margin-top: 15px; border-radius: 8px; display: none; }
-.loading {
-  display: inline-block;
-  width: 18px; height: 18px;
-  border: 3px solid #00e676;
-  border-radius: 50%;
-  border-top-color: transparent;
-  animation: spin 1s linear infinite;
-  vertical-align: middle;
-  margin-left: 8px;
-}
-.device-icon { margin-right:6px; width: 20px; text-align: center; }
-footer { text-align: center; margin-top: auto; color: #777; font-size: 13px; padding: 12px 0; }
-@keyframes spin { to { transform: rotate(360deg); } }
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="免费查询公网 IP、地理归属、运营商、ASN、网络画像与设备环境。支持 IPv4 和 IPv6。">
+  <meta name="theme-color" content="#07110f">
+  <meta property="og:title" content="WhatIP — 网络出口情报面板">
+  <meta property="og:description" content="一眼看清你的公网 IP、地理归属、运营商和设备环境。">
+  <meta property="og:image" content="og.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <title>WhatIP — 看见你的网络真实出口</title>
+  <link rel="icon" href="favicon.png" type="image/png">
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+  <div class="site-shell">
+    <div class="ambient ambient-one"></div>
+    <div class="ambient ambient-two"></div>
 
-<header>🌐 What Is My IP</header>
+    <header class="topbar">
+      <a class="brand" href="#top" aria-label="WhatIP 首页">
+        <span class="brand-mark">W</span>
+        <span><strong>WHATIP</strong><small>NETWORK INTELLIGENCE</small></span>
+      </a>
+      <nav aria-label="主要导航">
+        <a href="#overview">IP 概览</a>
+        <a href="#network">网络画像</a>
+        <a href="#device">设备环境</a>
+      </nav>
+      <div class="top-actions">
+        <span class="live-pill"><i></i> 服务在线</span>
+        <button class="icon-button" id="themeToggle" aria-label="切换明暗主题" title="切换主题">☼</button>
+      </div>
+    </header>
 
-<!-- 1. 当前 IP 卡片 -->
-<div class="card">
-  <h2><span>📍</span> 当前网络环境</h2>
-  <div class="info" id="myIpInfo">查询中... <span class="loading"></span></div>
-</div>
-
-<!-- 2. 手动查询卡片 -->
-<div class="card">
-  <h2><span>🔎</span> 手动查询其他 IP</h2>
-  <div class="input-group">
-    <input type="text" id="ipInput" placeholder="输入 IP 地址">
-    <button class="search-btn" onclick="queryIP()">查询</button>
-  </div>
-  
-  <!-- 结果显示区域 -->
-  <div class="info" id="result"></div>
-  
-  <!-- 地图 -->
-  <div id="map"></div>
-  
-  <!-- 历史记录 -->
-  <div class="history-list" id="historyList"></div>
-</div>
-
-<!-- 3. 设备信息卡片 -->
-<div class="card">
-  <h2><span>🖥️</span> 用户设备 / 浏览器</h2>
-  <div class="info" id="deviceInfo">加载中...</div>
-</div>
-
-<footer>
-  联系我: <a href="mailto:donluox@protonmail.com" style="color:#00e676; text-decoration:none;">donluox@protonmail.com</a>
-</footer>
-
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-<script>
-
-// --- 功能 1: IP 类型分析函数 ---
-function analyzeIpType(isp, org, asn) {
-  const text = (isp + " " + org + " " + asn).toLowerCase();
-  
-  // 机房关键词
-  const dcKeywords = [
-    'cloud', 'hosting', 'vps', 'server', 'data center', 'datacenter',
-    'amazon', 'aws', 'google', 'microsoft', 'azure', 'digitalocean', 'linode', 'vultr',
-    'alibaba', 'tencent', 'huawei', 'ucloud', 'choopa', 'hetzner', 'ovh', 
-    'leaseweb', 'zenlayer', 'host', 'm247', 'xtom', 'misaka', 'oracle'
-  ];
-
-  // 住宅关键词
-  const resKeywords = [
-    'telecom', 'cable', 'dsl', 'fiber', 'broadband', 'internet', 'mobile', 
-    'comcast', 'verizon', 'at&t', 'spectrum', 'virgin', 'vodafone', 't-mobile', 
-    'china telecom', 'china unicom', 'china mobile', 'hkt', 'pccw', 'kt corporation'
-  ];
-
-  let type = "未知类型";
-  let badgeClass = "badge-yellow"; 
-  let desc = "无法确定类型";
-
-  const isDC = dcKeywords.some(kw => text.includes(kw));
-  const isRes = resKeywords.some(kw => text.includes(kw));
-
-  if (isDC) {
-    type = "🏢 机房/数据中心";
-    badgeClass = "badge-red";
-    desc = "疑似代理或 VPN，风控值可能较高";
-  } else if (isRes) {
-    type = "🏠 住宅 ISP";
-    badgeClass = "badge-green";
-    desc = "原生 IP，通常较为纯净";
-  } else {
-    type = "🏢 企业/组织";
-    desc = "可能是企业专线";
-  }
-
-  return { type, badgeClass, desc };
-}
-
-// --- 功能 2: 获取 IP 信息与渲染 ---
-async function fetchIPInfo(ip, el, isManual = false){
-  el.innerHTML = '查询中... <span class="loading"></span>';
-  if(isManual) document.getElementById('map').style.display = 'none';
-
-  try {
-    const url = ip ? `https://ipapi.co/${ip}/json/` : 'https://ipapi.co/json/';
-    const res = await fetch(url);
-    if (!res.ok) throw new Error("API 请求过快，请稍后");
-    const data = await res.json();
-
-    if(data.error) throw new Error(data.reason || "IP 无效");
-
-    // 核心分析
-    const analysis = analyzeIpType(data.org || '', data.isp || '', data.asn || '');
-    const countryFlag = data.country_code ? `<img class="flag" src="https://flagcdn.com/24x18/${data.country_code.toLowerCase()}.png">` : '';
-
-    // 渲染主信息
-    let htmlContent = `
-      <div><strong>IP 地址:</strong> ${data.ip}</div>
-      <div><strong>归属地:</strong> ${data.country_name||'未知'} ${countryFlag} - ${data.city||''}</div>
-      <div><strong>运营商:</strong> ${data.org || data.isp}</div>
-      <div><strong>纯净度:</strong> <span class="badge ${analysis.badgeClass}">${analysis.type}</span> <span style="color:#888; font-size:13px;">(${analysis.desc})</span></div>
-      <div><strong>时区:</strong> ${data.timezone}</div>
-    `;
-
-    // 如果是手动查询，添加外部工具按钮
-    if (isManual) {
-      htmlContent += `
-        <div class="tool-links">
-          <a href="https://scamalytics.com/ip/${data.ip}" target="_blank" class="tool-btn" title="查看欺诈分数"><i class="fa-solid fa-shield-halved"></i> Scamalytics</a>
-          <a href="https://whoer.net/check?host=${data.ip}" target="_blank" class="tool-btn" title="检查伪装度"><i class="fa-solid fa-user-secret"></i> Whoer</a>
-          <a href="https://bgp.he.net/ip/${data.ip}" target="_blank" class="tool-btn" title="BGP 路由信息"><i class="fa-solid fa-network-wired"></i> BGP.he.net</a>
+    <main id="top">
+      <section class="hero" id="overview">
+        <div class="hero-copy">
+          <div class="eyebrow"><span>LIVE NETWORK SNAPSHOT</span><span>实时网络快照</span></div>
+          <h1>看见你的网络<br><em>真实出口。</em></h1>
+          <p>快速识别公网 IP、地理归属、运营商与设备环境。数据只在你的浏览器中处理，不建立账户，也不上传查询历史。</p>
         </div>
-      `;
-      
-      if (data.latitude && data.longitude) updateMap(data.latitude, data.longitude, data.city);
-      addHistory(data.ip);
-    }
+        <div class="ip-spotlight">
+          <div class="spotlight-head">
+            <span><i class="status-dot"></i> 当前公网 IP</span>
+            <button id="refreshCurrent">↻ 刷新</button>
+          </div>
+          <div class="ip-skeleton" id="currentSkeleton"><span></span><span></span><span></span></div>
+          <div id="currentContent" hidden>
+            <button class="hero-ip" id="currentIp" title="点击复制 IP">暂未获取<span>复制</span></button>
+            <div class="spotlight-meta">
+              <span id="currentLocation">◎ 未知地区</span>
+              <span id="currentOrg">未知运营商</span>
+              <span id="currentVersion">IPv4 / IPv6</span>
+            </div>
+          </div>
+        </div>
+      </section>
 
-    el.innerHTML = htmlContent;
+      <section class="search-section" aria-labelledby="searchTitle">
+        <div class="section-label"><span>01</span><div><h2 id="searchTitle">查询任意 IP</h2><p>支持标准 IPv4 与 IPv6 地址</p></div></div>
+        <form class="search-box" id="searchForm">
+          <span class="search-symbol">⌖</span>
+          <label class="sr-only" for="ipSearch">输入 IP 地址</label>
+          <input id="ipSearch" placeholder="例如 8.8.8.8 或 2001:4860:4860::8888" autocomplete="off" spellcheck="false">
+          <button type="button" class="clear-input" id="clearSearch" hidden>×</button>
+          <button class="search-button" id="searchButton" type="submit">开始查询 <span>↗</span></button>
+        </form>
+        <div class="search-helper" id="searchHelper">
+          <span>快捷示例：</span>
+          <button data-example="8.8.8.8">8.8.8.8</button>
+          <button data-example="1.1.1.1">1.1.1.1</button>
+          <button data-example="2001:4860:4860::8888">2001:4860:4860::8888</button>
+        </div>
+      </section>
 
-  } catch(err) {
-    el.innerHTML = `<span style="color:#ff5252"><i class="fa-solid fa-triangle-exclamation"></i> 查询失败: ${err.message}</span>`;
+      <section class="dashboard" id="network">
+        <article class="panel identity-panel">
+          <div class="panel-head">
+            <div><span class="panel-kicker">IDENTITY</span><h2 id="resultTitle">当前网络身份</h2></div>
+            <div class="panel-actions">
+              <button id="favoriteButton" title="收藏此 IP">☆</button>
+              <button id="exportButton" title="导出 JSON">↓</button>
+              <button id="copyButton" title="复制 IP">⧉</button>
+            </div>
+          </div>
+          <div id="identityEmpty" class="empty-panel"><span>⌁</span><p>等待网络数据返回…</p></div>
+          <div id="identityContent" hidden>
+            <div class="identity-row">
+              <div class="flag-tile" id="resultFlag">◎</div>
+              <div><strong class="result-ip" id="resultIp">—</strong><p id="resultNetwork">IPv4 · 网段信息暂不可用</p></div>
+            </div>
+            <div class="data-grid">
+              <div class="data-point"><span>国家 / 地区</span><strong id="countryValue">未知</strong><small id="countrySub"></small></div>
+              <div class="data-point"><span>城市</span><strong id="cityValue">未知</strong><small id="citySub"></small></div>
+              <div class="data-point wide"><span>运营商 / 组织</span><strong id="orgValue">未知</strong><small id="orgSub"></small></div>
+              <div class="data-point"><span>时区</span><strong id="timezoneValue">未知</strong><small id="timezoneSub"></small></div>
+              <div class="data-point"><span>邮政编码</span><strong id="postalValue">未知</strong></div>
+              <div class="data-point"><span>坐标（近似）</span><strong id="coordValue">未知</strong></div>
+              <div class="data-point"><span>国家代码</span><strong id="callingValue">未知</strong><small id="currencySub"></small></div>
+            </div>
+          </div>
+        </article>
+
+        <article class="panel score-panel">
+          <div class="panel-head"><div><span class="panel-kicker">NETWORK PROFILE</span><h2>网络画像</h2></div><span class="tone-dot warning" id="toneDot"></span></div>
+          <div class="score-ring" id="scoreRing" style="--score: 162deg"><div><strong id="scoreValue">45</strong><span>/ 100</span></div></div>
+          <div class="network-badge warning" id="networkBadge">企业 / 未分类网络</div>
+          <p class="score-note" id="scoreNote">需要结合专业风控数据库进一步确认</p>
+          <div class="signal-list">
+            <div><span>ASN 信息</span><strong class="muted" id="asnSignal">不可用</strong></div>
+            <div><span>运营商可识别</span><strong class="muted" id="orgSignal">不可用</strong></div>
+            <div><span>地理信息完整</span><strong class="muted" id="geoSignal">不可用</strong></div>
+          </div>
+          <p class="disclaimer">画像为启发式判断，不等同于专业欺诈评分。</p>
+        </article>
+
+        <article class="panel map-panel">
+          <div class="panel-head"><div><span class="panel-kicker">APPROXIMATE LOCATION</span><h2>地理位置</h2></div><span class="coord" id="mapCoord">-- / --</span></div>
+          <div id="mapEmpty" class="empty-panel"><span>⌁</span><p>暂无可用坐标</p></div>
+          <div class="map-frame" id="mapFrame" hidden>
+            <iframe id="map" title="IP 的近似位置" loading="lazy" referrerpolicy="no-referrer"></iframe>
+            <span class="map-label" id="mapLabel">未知城市 · 仅供参考</span>
+          </div>
+        </article>
+
+        <article class="panel tools-panel">
+          <div class="panel-head"><div><span class="panel-kicker">DEEP CHECK</span><h2>深度检测工具</h2></div></div>
+          <p>需要更专业的信誉、匿名度或路由数据？可将当前 IP 交给这些第三方工具继续分析。</p>
+          <div class="tool-list">
+            <a id="scamalyticsLink" href="#" target="_blank" rel="noopener noreferrer" aria-disabled="true"><span class="tool-icon">↗</span><span><strong>Scamalytics</strong><small>欺诈风险评分</small></span><em>RISK</em></a>
+            <a id="whoerLink" href="#" target="_blank" rel="noopener noreferrer" aria-disabled="true"><span class="tool-icon">↗</span><span><strong>Whoer</strong><small>匿名度与代理检测</small></span><em>PRIVACY</em></a>
+            <a id="bgpLink" href="#" target="_blank" rel="noopener noreferrer" aria-disabled="true"><span class="tool-icon">↗</span><span><strong>BGP Toolkit</strong><small>ASN 与路由前缀</small></span><em>ROUTE</em></a>
+          </div>
+        </article>
+      </section>
+
+      <section class="lower-grid" id="device">
+        <article class="panel device-panel">
+          <div class="panel-head"><div><span class="panel-kicker">LOCAL ENVIRONMENT</span><h2>设备与浏览器</h2></div><span class="local-chip">仅本地读取</span></div>
+          <div class="device-grid" id="deviceGrid"></div>
+          <div class="privacy-row" id="privacyRow"></div>
+        </article>
+        <article class="panel history-panel">
+          <div class="panel-head"><div><span class="panel-kicker">LOCAL HISTORY</span><h2>最近查询</h2></div><button class="text-button" id="clearHistory" hidden>清空</button></div>
+          <div class="history-list" id="historyList"></div>
+          <div class="empty-panel" id="historyEmpty"><span>⌁</span><p>查询记录会保存在这台设备中</p></div>
+        </article>
+      </section>
+
+      <details class="raw-panel" id="rawPanel" hidden>
+        <summary>查看原始数据 <span>JSON</span></summary>
+        <div class="raw-head"><p>来自 ipapi.co 的原始响应</p><button id="copyRaw">复制全部</button></div>
+        <pre id="rawData"></pre>
+      </details>
+    </main>
+
+    <footer>
+      <div class="brand footer-brand"><span class="brand-mark">W</span><span><strong>WHATIP</strong><small>Know your network edge.</small></span></div>
+      <p>IP 地理位置为数据库估算，无法定位到具体门牌或个人。</p>
+      <a href="mailto:donluox@protonmail.com">donluox@protonmail.com ↗</a>
+    </footer>
+    <div class="toast" id="toast" role="status" aria-live="polite"><span>✓</span><b id="toastText"></b></div>
+  </div>
+
+<script>
+(() => {
+  "use strict";
+  const API_ROOT = "https://ipapi.co";
+  const HISTORY_KEY = "whatip.history.v2";
+  const FAVORITES_KEY = "whatip.favorites.v1";
+  const THEME_KEY = "whatip.theme.v1";
+  const state = { current: null, result: null, history: [], favorites: [], controller: null };
+  const $ = (id) => document.getElementById(id);
+
+  function validIP(value) {
+    const v4 = /^(25[0-5]|2[0-4]\d|1?\d?\d)(\.(25[0-5]|2[0-4]\d|1?\d?\d)){3}$/;
+    const v6 = /^(?:[\da-fA-F]{1,4}:){2,7}[\da-fA-F]{0,4}$|^::1$|^::$/;
+    return v4.test(value) || v6.test(value);
   }
-}
 
-// --- 功能 3: 地图显示 ---
-let map = null, marker = null;
-function updateMap(lat, lon, text) {
-    const mapDiv = document.getElementById('map');
-    mapDiv.style.display = 'block';
-    if(!map) {
-        map = L.map('map').setView([lat, lon], 13);
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { 
-          attribution: '&copy; OpenStreetMap',
-          maxZoom: 18 
-        }).addTo(map);
-    } else {
-        map.setView([lat, lon], 13);
+  function flag(code) {
+    if (!code || code.length !== 2) return "◎";
+    return String.fromCodePoint(...code.toUpperCase().split("").map(char => 127397 + char.charCodeAt(0)));
+  }
+
+  function analyze(data) {
+    const text = `${data?.org || ""} ${data?.asn || ""}`.toLowerCase();
+    const has = words => words.some(word => text.includes(word));
+    if (has(["cloud", "hosting", "vps", "server", "datacenter", "data center", "amazon", "aws", "google", "azure", "digitalocean", "linode", "vultr", "alibaba", "tencent", "huawei", "choopa", "hetzner", "ovh", "leaseweb", "oracle", "m247"]))
+      return { label: "数据中心 / 云服务", tone: "danger", score: 78, note: "可能是代理、服务器或 VPN 出口" };
+    if (has(["mobile", "wireless", "cellular", "vodafone", "t-mobile", "china mobile"]))
+      return { label: "移动网络", tone: "blue", score: 62, note: "运营商级 NAT 和动态地址较常见" };
+    if (has(["telecom", "cable", "dsl", "fiber", "broadband", "comcast", "verizon", "spectrum", "virgin", "unicom", "pccw", "hkt"]))
+      return { label: "住宅宽带", tone: "success", score: 86, note: "从运营商名称判断为终端用户网络" };
+    return { label: "企业 / 未分类网络", tone: "warning", score: 45, note: "需要结合专业风控数据库进一步确认" };
+  }
+
+  function notify(message) {
+    $("toastText").textContent = message;
+    $("toast").classList.add("show");
+    clearTimeout(notify.timer);
+    notify.timer = setTimeout(() => $("toast").classList.remove("show"), 2200);
+  }
+
+  async function copy(text, message = "已复制到剪贴板") {
+    if (!text) return;
+    try { await navigator.clipboard.writeText(text); notify(message); }
+    catch { notify("复制失败，请手动复制"); }
+  }
+
+  function setText(id, value, fallback = "未知") { $(id).textContent = value || fallback; }
+  function setSignal(id, ok) { const el = $(id); el.textContent = ok ? "已确认" : "不可用"; el.className = ok ? "good" : "muted"; }
+
+  function renderCurrent(data) {
+    $("currentSkeleton").hidden = true;
+    $("currentContent").hidden = false;
+    setText("currentIp", data.ip, "暂未获取");
+    $("currentIp").append(Object.assign(document.createElement("span"), { textContent: "复制" }));
+    setText("currentLocation", `${flag(data.country_code)} ${data.country_name || "未知地区"}`);
+    setText("currentOrg", data.org, "未知运营商");
+    setText("currentVersion", data.version || (data.ip.includes(":") ? "IPv6" : "IPv4"));
+  }
+
+  function renderActive(data) {
+    if (!data) return;
+    const profile = analyze(data);
+    $("identityEmpty").hidden = true;
+    $("identityContent").hidden = false;
+    $("rawPanel").hidden = false;
+    setText("resultTitle", state.result ? "查询结果" : "当前网络身份");
+    setText("resultFlag", flag(data.country_code));
+    setText("resultIp", data.ip);
+    setText("resultNetwork", `${data.version || (data.ip.includes(":") ? "IPv6" : "IPv4")} · ${data.network || "网段信息暂不可用"}`);
+    setText("countryValue", data.country_name); setText("countrySub", data.country_code, "");
+    setText("cityValue", data.city); setText("citySub", data.region, "");
+    setText("orgValue", data.org); setText("orgSub", data.asn, "");
+    setText("timezoneValue", data.timezone); setText("timezoneSub", data.utc_offset, "");
+    setText("postalValue", data.postal);
+    setText("coordValue", data.latitude && data.longitude ? `${Number(data.latitude).toFixed(4)}, ${Number(data.longitude).toFixed(4)}` : "未知");
+    setText("callingValue", data.country_calling_code); setText("currencySub", data.currency, "");
+    $("favoriteButton").textContent = state.favorites.includes(data.ip) ? "★" : "☆";
+    $("scoreValue").textContent = profile.score;
+    $("scoreRing").style.setProperty("--score", `${profile.score * 3.6}deg`);
+    $("networkBadge").textContent = profile.label; $("networkBadge").className = `network-badge ${profile.tone}`;
+    $("toneDot").className = `tone-dot ${profile.tone}`;
+    $("scoreNote").textContent = profile.note;
+    setSignal("asnSignal", Boolean(data.asn)); setSignal("orgSignal", Boolean(data.org)); setSignal("geoSignal", Boolean(data.city && data.country_name));
+    $("rawData").textContent = JSON.stringify(data, null, 2);
+    updateMap(data); updateTools(data.ip);
+  }
+
+  function updateMap(data) {
+    if (!data.latitude || !data.longitude) { $("mapEmpty").hidden = false; $("mapFrame").hidden = true; return; }
+    const lat = Number(data.latitude), lon = Number(data.longitude);
+    $("mapEmpty").hidden = true; $("mapFrame").hidden = false;
+    $("mapCoord").textContent = `${lat.toFixed(2)} / ${lon.toFixed(2)}`;
+    $("mapLabel").textContent = `${data.city || "未知城市"} · 仅供参考`;
+    $("map").src = `https://www.openstreetmap.org/export/embed.html?bbox=${lon-.12}%2C${lat-.07}%2C${lon+.12}%2C${lat+.07}&layer=mapnik&marker=${lat}%2C${lon}`;
+  }
+
+  function updateTools(ip) {
+    const links = [["scamalyticsLink", `https://scamalytics.com/ip/${encodeURIComponent(ip)}`], ["whoerLink", `https://whoer.net/check?host=${encodeURIComponent(ip)}`], ["bgpLink", `https://bgp.he.net/ip/${encodeURIComponent(ip)}`]];
+    links.forEach(([id, href]) => { $(id).href = href; $(id).removeAttribute("aria-disabled"); });
+  }
+
+  async function fetchIP(ip, manual = false) {
+    if (manual) {
+      state.controller?.abort(); state.controller = new AbortController();
+      $("searchButton").disabled = true; $("searchButton").innerHTML = '<span class="spinner"></span> 查询中';
+      showHelper("");
+    } else { $("currentSkeleton").hidden = false; $("currentContent").hidden = true; }
+    try {
+      const url = ip ? `${API_ROOT}/${encodeURIComponent(ip)}/json/` : `${API_ROOT}/json/`;
+      const response = await fetch(url, { signal: manual ? state.controller.signal : undefined });
+      if (!response.ok) throw new Error(response.status === 429 ? "查询过于频繁，请稍后再试" : `查询服务暂时不可用（${response.status}）`);
+      const data = await response.json();
+      if (data.error || !data.ip) throw new Error(data.reason || "没有找到这个 IP 地址");
+      if (manual) {
+        state.result = data; $("ipSearch").value = data.ip; addHistory(data);
+        const next = new URL(location.href); next.searchParams.set("ip", data.ip); history.replaceState({}, "", next);
+      } else { state.current = data; renderCurrent(data); }
+      renderActive(state.result || state.current);
+    } catch (error) {
+      if (error.name === "AbortError") return;
+      showHelper(manual ? error.message : `当前 IP 获取失败：${error.message}`, true);
+    } finally {
+      if (manual) { $("searchButton").disabled = false; $("searchButton").innerHTML = '开始查询 <span>↗</span>'; }
     }
-    if(marker) map.removeLayer(marker);
-    marker = L.marker([lat, lon]).addTo(map).bindPopup(`<b>${text}</b>`).openPopup();
-    setTimeout(() => { map.invalidateSize(); }, 300);
-}
+  }
 
-// --- 功能 4: 历史记录 ---
-let historyIPs=[];
-function addHistory(ip){
-  historyIPs = historyIPs.filter(item => item !== ip);
-  historyIPs.unshift(ip);
-  if(historyIPs.length > 8) historyIPs.pop();
-  
-  const listEl = document.getElementById('historyList');
-  listEl.innerHTML = '历史记录: ';
-  historyIPs.forEach(item => {
-    const span = document.createElement('span');
-    span.textContent = item;
-    span.className = 'history-tag';
-    span.onclick = () => {
-        document.getElementById('ipInput').value = item;
-        queryIP();
-    };
-    listEl.appendChild(span);
-  });
-}
+  function showHelper(message, isError = false) {
+    const helper = $("searchHelper");
+    if (!message) {
+      helper.innerHTML = '<span>快捷示例：</span><button data-example="8.8.8.8">8.8.8.8</button><button data-example="1.1.1.1">1.1.1.1</button><button data-example="2001:4860:4860::8888">2001:4860:4860::8888</button>';
+      bindExamples(); return;
+    }
+    helper.innerHTML = "";
+    const span = document.createElement("span"); span.className = isError ? "error-text" : ""; span.textContent = `${isError ? "⚠ " : ""}${message}`; helper.append(span);
+  }
 
-// --- 功能 5: 设备检测 ---
-function detectDevice() {
-  const ua = navigator.userAgent;
-  const el = document.getElementById("deviceInfo");
-  let system="未知系统", browser="未知浏览器";
-  let sysIcon='<i class="fa-solid fa-desktop device-icon"></i>';
-  let brIcon='<i class="fa-solid fa-globe device-icon"></i>';
-  
-  if(/Android/i.test(ua)){ system="Android"; sysIcon='<i class="fab fa-android device-icon"></i>'; }
-  else if(/iPhone|iPad/i.test(ua)){ system="iOS"; sysIcon='<i class="fab fa-apple device-icon"></i>'; }
-  else if(/Windows/i.test(ua)){ system="Windows"; sysIcon='<i class="fab fa-windows device-icon"></i>'; }
-  else if(/Macintosh/i.test(ua)){ system="macOS"; sysIcon='<i class="fab fa-apple device-icon"></i>'; }
+  function addHistory(data) {
+    state.history = [{ ip: data.ip, city: data.city || "未知城市", country: data.country_name || "未知地区", checkedAt: Date.now() }, ...state.history.filter(item => item.ip !== data.ip)].slice(0, 10);
+    localStorage.setItem(HISTORY_KEY, JSON.stringify(state.history)); renderHistory();
+  }
 
-  if(/Chrome/i.test(ua)){ browser="Chrome"; brIcon='<i class="fab fa-chrome device-icon"></i>'; }
-  else if(/Firefox/i.test(ua)){ browser="Firefox"; brIcon='<i class="fab fa-firefox device-icon"></i>'; }
-  else if(/Safari/i.test(ua) && !/Chrome/i.test(ua)){ browser="Safari"; brIcon='<i class="fab fa-safari device-icon"></i>'; }
+  function ago(time) {
+    const s = Math.max(1, Math.floor((Date.now() - time) / 1000));
+    if (s < 60) return "刚刚"; if (s < 3600) return `${Math.floor(s/60)} 分钟前`; if (s < 86400) return `${Math.floor(s/3600)} 小时前`; return `${Math.floor(s/86400)} 天前`;
+  }
 
-  el.innerHTML = `${sysIcon}${system} &nbsp;|&nbsp; ${brIcon}${browser}`;
-}
+  function renderHistory() {
+    const list = $("historyList"); list.innerHTML = "";
+    $("historyEmpty").hidden = state.history.length > 0; $("clearHistory").hidden = state.history.length === 0;
+    state.history.forEach(item => {
+      const button = document.createElement("button");
+      const icon = document.createElement("span"); icon.className = "history-icon"; icon.textContent = "↗";
+      const content = document.createElement("span"); const strong = document.createElement("strong"); strong.textContent = item.ip; const small = document.createElement("small"); small.textContent = `${item.city} · ${item.country}`; content.append(strong, small);
+      const time = document.createElement("time"); time.textContent = ago(item.checkedAt);
+      button.append(icon, content, time); button.addEventListener("click", () => { $("ipSearch").value = item.ip; fetchIP(item.ip, true); scrollTo({ top: 430, behavior: "smooth" }); }); list.append(button);
+    });
+  }
 
-// --- 初始化 ---
-function queryIP(){
-  const ip=document.getElementById('ipInput').value.trim();
-  if(!ip) return alert('请输入 IP 地址');
-  fetchIPInfo(ip, document.getElementById('result'), true);
-}
+  function renderDevice() {
+    const ua = navigator.userAgent;
+    let os = /Windows/i.test(ua) ? "Windows" : /Android/i.test(ua) ? "Android" : /iPhone|iPad|iPod/i.test(ua) ? "iOS / iPadOS" : /Macintosh/i.test(ua) ? "macOS" : /Linux/i.test(ua) ? "Linux" : "未知系统";
+    let browser = /Edg\//i.test(ua) ? "Microsoft Edge" : /OPR\//i.test(ua) ? "Opera" : /Firefox\//i.test(ua) ? "Firefox" : /Chrome\//i.test(ua) ? "Chrome" : /Safari\//i.test(ua) ? "Safari" : "未知浏览器";
+    const connection = navigator.connection;
+    const values = [["▣", "操作系统", os], ["◎", "浏览器", browser], ["文", "语言", navigator.language || "未知"], ["◷", "本地时区", Intl.DateTimeFormat().resolvedOptions().timeZone || "未知"], ["▱", "屏幕", `${screen.width} × ${screen.height} · ${devicePixelRatio}x`], ["⌁", "网络类型", connection?.effectiveType ? `${connection.effectiveType.toUpperCase()}${connection.downlink ? ` · ${connection.downlink} Mbps` : ""}` : "浏览器未公开"]];
+    const grid = $("deviceGrid"); grid.innerHTML = "";
+    values.forEach(([icon, label, value]) => { const item = document.createElement("div"); item.className = "device-item"; const i = document.createElement("span"); i.className = "device-icon"; i.textContent = icon; const div = document.createElement("div"); const small = document.createElement("small"); small.textContent = label; const strong = document.createElement("strong"); strong.textContent = value; div.append(small, strong); item.append(i, div); grid.append(item); });
+    const privacy = [["在线", navigator.onLine, false], ["安全上下文", isSecureContext, false], ["Cookie", navigator.cookieEnabled, false], ["请勿追踪", navigator.doNotTrack === "1", true]];
+    const row = $("privacyRow"); row.innerHTML = "";
+    privacy.forEach(([label, ok, neutral]) => { const span = document.createElement("span"); span.className = neutral ? "neutral" : ok ? "ok" : "off"; span.innerHTML = "<i></i>"; span.append(`${label}: ${neutral ? ok ? "已开启" : "未开启" : ok ? "是" : "否"}`); row.append(span); });
+  }
 
-document.getElementById('ipInput').addEventListener('keypress', (e) => {
-    if (e.key === 'Enter') queryIP();
-});
+  function bindExamples() { document.querySelectorAll("[data-example]").forEach(button => button.addEventListener("click", () => { const ip = button.dataset.example; $("ipSearch").value = ip; $("clearSearch").hidden = false; fetchIP(ip, true); })); }
 
-detectDevice();
-fetchIPInfo(null, document.getElementById('myIpInfo'));
+  $("searchForm").addEventListener("submit", event => { event.preventDefault(); const ip = $("ipSearch").value.trim(); if (!ip) return showHelper("请输入要查询的 IPv4 或 IPv6 地址", true); if (!validIP(ip)) return showHelper("IP 格式不正确，请检查后再试", true); fetchIP(ip, true); });
+  $("ipSearch").addEventListener("input", event => { $("clearSearch").hidden = !event.target.value; showHelper(""); });
+  $("clearSearch").addEventListener("click", () => { $("ipSearch").value = ""; $("clearSearch").hidden = true; showHelper(""); $("ipSearch").focus(); });
+  $("refreshCurrent").addEventListener("click", () => fetchIP());
+  $("currentIp").addEventListener("click", () => copy(state.current?.ip));
+  $("copyButton").addEventListener("click", () => copy((state.result || state.current)?.ip));
+  $("copyRaw").addEventListener("click", () => copy(JSON.stringify(state.result || state.current, null, 2), "原始数据已复制"));
+  $("favoriteButton").addEventListener("click", () => { const ip = (state.result || state.current)?.ip; if (!ip) return; const exists = state.favorites.includes(ip); state.favorites = exists ? state.favorites.filter(item => item !== ip) : [ip, ...state.favorites].slice(0, 12); localStorage.setItem(FAVORITES_KEY, JSON.stringify(state.favorites)); $("favoriteButton").textContent = exists ? "☆" : "★"; notify(exists ? "已取消收藏" : "已加入收藏"); });
+  $("exportButton").addEventListener("click", () => { const data = state.result || state.current; if (!data) return; const url = URL.createObjectURL(new Blob([JSON.stringify(data, null, 2)], { type: "application/json" })); const a = document.createElement("a"); a.href = url; a.download = `whatip-${data.ip.replaceAll(":", "-")}.json`; a.click(); URL.revokeObjectURL(url); notify("JSON 报告已导出"); });
+  $("clearHistory").addEventListener("click", () => { state.history = []; localStorage.removeItem(HISTORY_KEY); renderHistory(); });
+  $("themeToggle").addEventListener("click", () => { const next = document.documentElement.dataset.theme === "dark" ? "light" : "dark"; document.documentElement.dataset.theme = next; localStorage.setItem(THEME_KEY, next); $("themeToggle").textContent = next === "dark" ? "☼" : "◐"; });
+
+  try { state.history = JSON.parse(localStorage.getItem(HISTORY_KEY) || "[]"); state.favorites = JSON.parse(localStorage.getItem(FAVORITES_KEY) || "[]"); } catch { state.history = []; state.favorites = []; }
+  const theme = localStorage.getItem(THEME_KEY) === "light" ? "light" : "dark"; document.documentElement.dataset.theme = theme; $("themeToggle").textContent = theme === "dark" ? "☼" : "◐";
+  renderDevice(); renderHistory(); bindExamples(); fetchIP();
+  const preset = new URLSearchParams(location.search).get("ip"); if (preset && validIP(preset)) { $("ipSearch").value = preset; $("clearSearch").hidden = false; fetchIP(preset, true); }
+})();
 </script>
 </body>
 </html>
